@@ -1,0 +1,916 @@
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>BNA Week 12</title>
+<style>
+:root{
+  --bg:#f6f9fc;--panel:#fff;--text:#283e50;--muted:#546b7e;
+  --line:#d4e0ea;--accent:#285e89;--blue:#edf5fc;
+  --purple:#f3eff9;--green:#eef8f2;--warm:#fff6e8;
+}
+[data-theme="dark"]{
+  --bg:#111d27;--panel:#1b2b38;--text:#e9f1f8;--muted:#b7cada;
+  --line:#43586a;--accent:#a6d5ff;--blue:#233d52;
+  --purple:#352e48;--green:#233e33;--warm:#423824;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;
+}
+button,select{font:inherit}
+button,select{
+  border:1px solid var(--line);border-radius:10px;
+  padding:9px 12px;background:var(--panel);color:var(--text);
+}
+button{cursor:pointer}
+button:hover:not(:disabled){background:var(--blue)}
+button:disabled{opacity:.45;cursor:not-allowed}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+[hidden]{display:none!important}
+.skip{position:fixed;top:-90px;left:12px;z-index:100;background:var(--panel);padding:10px}
+.skip:focus{top:10px}
+header.bar{
+  position:sticky;top:0;z-index:20;min-height:76px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;padding:12px 22px;background:var(--panel);
+  border-bottom:1px solid var(--line);
+}
+.brand{font-weight:750}
+.brand small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.tools{display:flex;gap:8px;align-items:center}
+.menu-open-button,.close-button{display:none}
+.layout{max-width:1450px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr)}
+aside{
+  position:sticky;top:76px;height:calc(100dvh - 76px);
+  overflow:auto;padding:25px 16px;background:var(--panel);
+  border-right:1px solid var(--line);
+}
+.nav-heading{font-size:.8rem;color:var(--muted);font-weight:700;margin:0 10px 15px}
+.module-button{
+  display:block;width:100%;text-align:left;background:transparent;
+  border-color:transparent;margin-bottom:5px;
+}
+.module-button[aria-current="page"]{
+  background:var(--blue);color:var(--accent);
+  border-color:var(--line);font-weight:700;
+}
+.subnav{display:grid;gap:7px;padding:4px 12px 15px 36px;font-size:.85rem}
+.subnav a{text-decoration:none}
+.subnav a:hover{text-decoration:underline}
+.aside-note{font-size:.8rem;color:var(--muted);margin:22px 10px}
+.download{width:100%;margin-top:12px}
+main{min-width:0;padding:32px 34px 0}
+.content{max-width:900px;margin:auto}
+.eyebrow{font-size:.8rem;color:var(--accent);font-weight:700;letter-spacing:.06em}
+h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.25;margin:10px 0 15px}
+h2{font-size:1.2rem;line-height:1.4;margin:0 0 12px}
+p{margin:0 0 12px}
+.lead,.muted{color:var(--muted)}
+.badge{
+  display:inline-block;background:var(--purple);
+  border-radius:20px;padding:4px 12px;font-size:.8rem;margin-top:4px;
+}
+.card,.audio{
+  border:1px solid var(--line);border-radius:16px;
+  padding:22px;background:var(--panel);margin:20px 0;
+  scroll-margin-top:100px;
+}
+.blue{background:var(--blue)}
+.green{background:var(--green)}
+.purple{background:var(--purple)}
+.warm{background:var(--warm)}
+ul{padding-left:23px;margin:10px 0}
+li{margin:6px 0}
+.result{border-top:1px solid var(--line);padding-top:12px;margin-top:15px;color:var(--muted)}
+.audio{background:var(--blue)}
+.audio-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.speed{display:flex;align-items:center;gap:8px;margin-left:auto}
+.small{font-size:.85rem;color:var(--muted)}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:600}
+.transcript{margin-top:12px;color:var(--muted)}
+.pagination{
+  display:flex;justify-content:space-between;gap:8px;
+  border-top:1px solid var(--line);padding-top:24px;margin-top:30px;
+}
+.count{text-align:center;color:var(--muted);font-size:.8rem;margin:14px 0}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:22px 0 30px}
+footer p{margin:5px 0}
+.backdrop{display:none}
+
+/* Responsive SVG overview */
+.diagram-wrap{margin:22px 0}
+.diagram{display:block;width:100%;height:auto}
+.diagram text{font-family:system-ui,"Noto Sans TC",sans-serif;fill:var(--text)}
+.diagram .sub{fill:var(--muted);font-size:16px}
+.diagram .label{fill:var(--accent);font-size:13px;font-weight:750}
+.diagram .heading{font-size:21px;font-weight:700}
+.diagram .body{font-size:18px}
+.diagram .box{fill:var(--panel);stroke:var(--line);stroke-width:1.3}
+.diagram .blue-box{fill:var(--blue)}
+.diagram .purple-box{fill:var(--purple)}
+.diagram .green-box{fill:var(--green)}
+.diagram .warm-box{fill:var(--warm)}
+.diagram .connector{fill:none;stroke:var(--muted);stroke-width:1.7}
+.diagram a{cursor:pointer}
+.diagram a:hover rect{stroke:var(--accent);stroke-width:2}
+.diagram a:focus-visible{outline:none}
+.diagram a:focus-visible rect{stroke:var(--accent);stroke-width:3}
+
+@media(max-width:950px){
+  .layout{grid-template-columns:230px minmax(0,1fr)}
+  main{padding:28px 22px 0}
+}
+@media(max-width:720px){
+  header.bar{padding:10px 12px}
+  .brand{font-size:.9rem}
+  .brand small{font-size:.7rem}
+  .tools{gap:5px}
+  .tools button{font-size:.8rem;padding:8px}
+  .menu-open-button,.close-button{display:block}
+  .layout{display:block}
+  aside{
+    position:fixed;top:0;left:0;z-index:50;
+    width:min(310px,86vw);height:100dvh;
+    transform:translateX(-100%);transition:transform .2s;
+  }
+  .close-button{margin:0 0 18px auto}
+  body.drawer-open{overflow:hidden}
+  body.drawer-open aside{transform:translateX(0)}
+  body.drawer-open .backdrop{
+    display:block;position:fixed;inset:0;z-index:40;background:#0007;
+  }
+  main{padding:25px 14px 0}
+  .card,.audio{padding:18px}
+  .speed{margin-left:0}
+  .pagination button{font-size:.8rem;padding:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+@media print{
+  .bar,aside,.audio,.pagination,.count{display:none!important}
+  .layout{display:block}
+  main{padding:0}
+  .card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip" id="skip">Skip to content</a>
+
+<header class="bar" id="bar">
+  <div class="tools">
+    <button id="openMenu" class="menu-open-button"
+      aria-controls="sidebar" aria-expanded="false" aria-label="Open menu">☰</button>
+    <div class="brand">BNA · Week 12
+      <small id="brandSub">Systematic · Structured · Process-oriented</small>
+    </div>
+  </div>
+  <div class="tools">
+    <button id="language">繁體中文</button>
+    <button id="theme">Dark</button>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+<div class="layout">
+  <aside id="sidebar" aria-label="Module navigation">
+    <button id="closeMenu" class="close-button" aria-label="Close menu">✕</button>
+    <p class="nav-heading" id="navHeading">Modules & subtopics</p>
+    <nav id="navigation" aria-label="Modules"></nav>
+    <button id="download" class="download">↓ Download HTML</button>
+    <p id="asideNote" class="aside-note"></p>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <div class="content">
+      <article aria-labelledby="title">
+        <div id="eyebrow" class="eyebrow"></div>
+        <h1 id="title" tabindex="-1"></h1>
+        <p id="intro" class="lead"></p>
+        <span id="badge" class="badge" hidden></span>
+
+        <div id="diagramContainer" class="diagram-wrap"></div>
+
+        <section class="audio" aria-labelledby="audioTitle">
+          <h2 id="audioTitle">Audio overview</h2>
+          <p id="audioNote" class="small"></p>
+          <div class="audio-controls">
+            <button id="play">Play</button>
+            <button id="pause" disabled>Pause</button>
+            <button id="stop" disabled>Stop</button>
+            <label class="speed">
+              <span id="speedLabel">Speed</span>
+              <select id="speed">
+                <option value="0.8">0.8×</option>
+                <option value="1" selected>1×</option>
+                <option value="1.2">1.2×</option>
+                <option value="1.5">1.5×</option>
+              </select>
+            </label>
+          </div>
+          <p id="audioStatus" class="small" role="status" aria-live="polite"></p>
+          
+        </section>
+
+        <div id="sections"></div>
+
+        <nav class="pagination" id="pagination" aria-label="Module pagination">
+          <button id="previous">← Previous</button>
+          <button id="backTop">↑ Back to top</button>
+          <button id="next">Next →</button>
+        </nav>
+        <p id="count" class="count"></p>
+      </article>
+
+      <footer>
+        <p>Architect: Prof. Shihmin Lo · <span id="versionLabel">Version</span> 1.0.1</p>
+        <p>© 2026 Prof. Shihmin Lo. All rights reserved.</p>
+        <p id="footerNote"></p>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const P = (en,zh) => ({en,zh});
+const S = (id,title,items,tone="",result=null) =>
+  ({id,title,items,tone,result});
+
+/* The six main stages follow the reviewed SVG.
+   Overview and market considerations are separate modules. */
+const modules = [
+{
+  id:"overview",
+  title:P("Process Overview","流程總覽"),
+  intro:P(
+    "BNA Agent: from analytical questions to evidence-supported insights.",
+    "BNA Agent：從分析問題到有證據支持的洞察。"),
+  audio:P(
+    "Business News and Analysis, Week 12. The BNA Agent term project analyzes news and analysis concerning the chosen company. The proposed workflow has six stages: define the project, define requirements and scope, collect relevant material, apply the analytical method, present the outcome, and evaluate and refine. The analytical method is separate, investigate deeply, and recombine. Market considerations are a related track, not a confirmed mandatory stage.",
+    "Business News and Analysis，第十二週。BNA Agent 期末專題分析所選公司的相關新聞與分析內容。建議流程有六個階段：定義專題、界定需求與範圍、蒐集相關資料、運用分析方法、呈現成果，以及評估與改善。分析方法為拆解、深入探究與重新整合。市場考量屬於相關議題，並非已確認的必經階段。"),
+  sections:[
+    S("context",P("Class and project context","課程與專題背景"),[
+      P("BNA = Business News and Analysis; W12 = Week 12.",
+        "BNA = Business News and Analysis；W12 = 第十二週。"),
+      P("TP = Term Project; product = BNA Agent.",
+        "TP = 期末專題；產品 = BNA Agent。"),
+      P("Click any stage in the diagram to open its module.",
+        "點選圖中的任一階段，可開啟對應模組。")
+    ]),
+    S("status",P("How to read this workspace","如何閱讀本介面"),[
+      P("The analytical method and Agent purpose are confirmed.",
+        "分析方法與 Agent 用途已確認。"),
+      P("Workflow details and PRD sections are proposed applications.",
+        "流程細節與 PRD 章節屬於建議應用。"),
+      P("Commercialization remains to be confirmed.",
+        "商業化是否納入專題仍待確認。")
+    ],"purple")
+  ]
+},
+{
+  id:"project",
+  title:P("01 · Define the Project","01 · 定義專題"),
+  intro:P("Establish purpose and analytical focus.","確立專題目的與分析焦點。"),
+  audio:P(
+    "The term project is a BNA Agent software application. Its purpose is to analyze news and analysis concerning the chosen company. Define the company, the problem, user needs, and analytical questions. The company and target audience have not been specified in this knowledge base.",
+    "期末專題是 BNA Agent 軟體應用程式，用於分析所選公司的相關新聞與分析內容。請定義公司、問題、使用者需求與分析提問。本知識庫尚未指定公司與目標受眾。"),
+  sections:[
+    S("purpose",P("Product purpose","產品目的"),[
+      P("Build a software application: BNA Agent.",
+        "開發軟體應用程式：BNA Agent。"),
+      P("Analyze news and analysis concerning the TP company.",
+        "分析期末專題所選公司的相關新聞與分析內容。")
+    ],"blue"),
+    S("focus",P("Analytical focus","分析焦點"),[
+      P("Company: which company is being studied?","公司：研究哪家公司？"),
+      P("Problem: what must be understood or resolved?","問題：需要理解或解決什麼？"),
+      P("Needs: who needs the analysis, and why?","需求：誰需要這項分析？為什麼？"),
+      P("Questions: what should the analysis answer?","提問：分析應回答什麼？")
+    ],"",P("Result: a clear purpose and scope.","產出：明確目的與範圍。"))
+  ]
+},
+{
+  id:"requirements",
+  title:P("02 · Requirements & Scope","02 · 需求與範圍"),
+  intro:P("Define the PRD and essential MVP functionality.","定義 PRD 與 MVP 的必要功能。"),
+  badge:P("Proposed project application","建議的專題應用"),
+  audio:P(
+    "Use a Product Requirements Document to define purpose, audience, needs, inputs, outputs, functions, and success criteria. Define the Minimum Viable Product as the essential initial scope for testing meaningful value. Do not remove necessary analytical steps merely to reduce effort. Specific features remain to be confirmed.",
+    "使用產品需求文件定義目的、受眾、需求、輸入、輸出、功能與成功標準。最小可行產品是驗證實質價值所需的必要初版範圍。不可僅為減少投入，就刪除必要分析步驟。具體功能仍待確認。"),
+  sections:[
+    S("prd",P("PRD — Product Requirements Document","PRD — 產品需求文件"),[
+      P("Product purpose, audience, problems, and needs.",
+        "產品目的、受眾、問題與需求。"),
+      P("Required inputs, outputs, and functions.","必要輸入、輸出與功能。"),
+      P("MVP scope and success criteria.","MVP 範圍與成功標準。")
+    ],"purple",P("These are recommended PRD sections.","以上為建議的 PRD 章節。")),
+    S("mvp",P("MVP — Minimum Viable Product","MVP — 最小可行產品"),[
+      P("Select essential initial functionality.","選擇必要的初版功能。"),
+      P("Test whether the product provides meaningful value.","驗證產品是否提供實質價值。"),
+      P("Preserve the necessary analytical process.","保留必要的分析流程。")
+    ],"",P("Confirm supported inputs, outputs, and essential features.",
+      "確認支援的輸入、輸出與必要功能。"))
+  ]
+},
+{
+  id:"inputs",
+  title:P("03 · Collect Relevant Material","03 · 蒐集相關資料"),
+  intro:P("Gather news and analysis about the chosen company.","蒐集所選公司的相關新聞與分析內容。"),
+  badge:P("Proposed project application","建議的專題應用"),
+  audio:P(
+    "Collect company-related news and analysis. Organize the material around topics and analytical questions. A recommended practice is to retain source references, dates, and relevant passages so evidence can be checked. Distinguish facts from interpretations and unresolved questions.",
+    "蒐集公司相關新聞與分析內容，依主題及分析問題整理。建議保留來源、日期與相關段落，方便查核證據。區分事實、詮釋與未解問題。"),
+  sections:[
+    S("sources",P("Information domain","資訊範圍"),[
+      P("News concerning the chosen company.","所選公司的相關新聞。"),
+      P("Analysis concerning the chosen company.","所選公司的相關分析內容。")
+    ],"green"),
+    S("evidence",P("Recommended evidence preparation","建議的證據準備"),[
+      P("Organize material by topic and question.","依主題與問題整理資料。"),
+      P("Retain sources, dates, and relevant passages.","保留來源、日期與相關段落。"),
+      P("Distinguish facts, interpretations, and open questions.",
+        "區分事實、詮釋與未解問題。")
+    ],"",P("Result: organized material for investigation.",
+      "產出：可供探究的有組織資料。"))
+  ]
+},
+{
+  id:"method",
+  title:P("04 · Analytical Method","04 · 分析方法"),
+  intro:P("Systematic · Structured · Process-oriented","系統性 · 結構性 · 流程導向"),
+  audio:P(
+    "Follow three analytical steps. First, separate the subject into components: the problem, needs, and questions. Second, investigate deeply and support findings with evidence. Third, recombine findings and explain their relationships. This produces a coherent understanding that supports a new representation and insights.",
+    "遵循三個分析步驟。首先，拆解主題的組成要素，辨識問題、需求與提問。其次，深入探究，以證據支持發現。最後，重新整合發現，說明彼此關係。如此建立連貫理解，支持新的呈現方式與洞察。"),
+  sections:[
+    S("separate",P("1 · Separate","1 · 拆解"),[
+      P("Identify the problem, needs / demand, and questions.",
+        "辨識問題、需求與提問。"),
+      P("Break the subject into clearly defined components.",
+        "將主題拆解為明確的組成要素。")
+    ],"blue",P("Result: clear components and analytical scope.",
+      "產出：明確要素與分析範圍。")),
+    S("investigate",P("2 · Investigate deeply","2 · 深入探究"),[
+      P("Examine each component in depth.","深入檢視各組成要素。"),
+      P("Support findings with evidence.","以證據支持分析發現。")
+    ],"blue",P("Result: evidence-supported findings.",
+      "產出：有證據支持的發現。")),
+    S("recombine",P("3 · Recombine","3 · 重新整合"),[
+      P("Integrate the findings.","整合各項發現。"),
+      P("Explain relationships between components.","說明組成要素間的關係。")
+    ],"green",P("Result: a coherent understanding.",
+      "產出：連貫的理解。"))
+  ]
+},
+{
+  id:"outcomes",
+  title:P("05 · Present the Outcome","05 · 呈現成果"),
+  intro:P("New representation → Insights","新的呈現方式 → 洞察"),
+  audio:P(
+    "Present the integrated findings as a structured summary, model, or diagram. A new representation makes relationships easier to understand and supports insights. Recommended outputs include questions, findings, evidence, relationships, and remaining uncertainties. Specific product output requirements remain to be confirmed.",
+    "以結構化摘要、模型或圖表呈現整合發現。新的呈現方式讓關係更容易理解，並支持洞察。建議輸出包含問題、發現、證據、關係與仍存在的不確定性。具體產品輸出需求仍待確認。"),
+  sections:[
+    S("representation",P("New representation","新的呈現方式"),[
+      P("Reorganize information into a clear structure.","將資訊重新組織為清楚結構。"),
+      P("Use a summary, model, or diagram.","使用摘要、模型或圖表。")
+    ],"green"),
+    S("insights",P("Insights and recommended outputs","洞察與建議輸出"),[
+      P("Explain meaningful findings and their relationships.",
+        "說明有意義的發現及其關係。"),
+      P("Include supporting evidence and sources.","附上支持證據與來源。"),
+      P("Identify limitations and unresolved questions.","指出限制與未解問題。")
+    ],"",P("Output details are recommendations, not confirmed requirements.",
+      "輸出細節為建議，並非已確認需求。"))
+  ]
+},
+{
+  id:"evaluation",
+  title:P("06 · Evaluate & Refine","06 · 評估與改善"),
+  intro:P("Assess effectiveness and efficiency without skipping necessary work.",
+    "評估有效性與效率，不跳過必要工作。"),
+  audio:P(
+    "Effectiveness asks whether the goal and purpose are reached. Efficiency concerns outputs relative to the resources required. Minimal input does not automatically produce high-quality output. Follow every necessary step and understand the whole process. As a recommended practice, refine requirements, scope, or analytical work when evaluation identifies gaps.",
+    "有效性關注是否達成目標與目的。效率關注產出與所需資源之間的關係。最少輸入不會自動產生高品質成果。必須完成每個必要步驟，理解整體流程。建議在評估發現不足時，調整需求、範圍或分析工作。"),
+  sections:[
+    S("effectiveness",P("Effectiveness","有效性"),[
+      P("Does the result achieve its goal and purpose?",
+        "結果是否達成目標與目的？")
+    ]),
+    S("efficiency",P("Efficiency — important correction","效率 — 重要修正"),[
+      P("Minimal input does not automatically produce high-quality output.",
+        "最少輸入不會自動產生高品質成果。"),
+      P("Follow each necessary step and understand the whole process.",
+        "完成每個必要步驟，理解整體流程。")
+    ],"warm"),
+    S("refinement",P("Recommended refinement loop","建議的改善循環"),[
+      P("Evaluate → identify gaps → refine → re-evaluate.",
+        "評估 → 辨識不足 → 改善 → 重新評估。"),
+      P("Revisit requirements, scope, or evidence when needed.",
+        "必要時重新檢視需求、範圍或證據。")
+    ],"blue")
+  ]
+},
+{
+  id:"market",
+  title:P("Related Track · Market Considerations","相關議題 · 市場考量"),
+  intro:P("Audience · Value · Willingness to Pay","受眾 · 價值 · 願付價格"),
+  badge:P("TP relevance to be confirmed","是否納入專題待確認"),
+  audio:P(
+    "Market considerations connect producers, markets, consumers, target audience, value, and willingness to pay. Ask who benefits from the BNA Agent, what problem it solves, and whether the audience would pay for that value. Commercialization is not a confirmed mandatory project stage. Its relevance and the intended meaning of commercialization and transactions remain to be clarified.",
+    "市場考量連結生產者、市場、消費者、目標受眾、價值與願付價格。可思考誰能從 BNA Agent 受益、產品解決什麼問題，以及受眾是否願意付費。商業化並非已確認的專題必經階段。是否納入專題，以及商業化與交易用語的意思，仍待釐清。"),
+  sections:[
+    S("relationships",P("Market relationships","市場關係"),[
+      P("Producers ↔ Market ↔ Consumers","生產者 ↔ 市場 ↔ 消費者"),
+      P("TA = Target Audience; WTP = Willingness to Pay.",
+        "TA = 目標受眾；WTP = 願付價格。")
+    ],"purple"),
+    S("value",P("Value questions","價值問題"),[
+      P("Who is the product for?","產品為誰而設？"),
+      P("What problem does it solve?","解決什麼問題？"),
+      P("Would the audience pay for that value?","受眾是否願意為此價值付費？")
+    ]),
+    S("commercialization",P("Commercialization","商業化"),[
+      P("Not a confirmed mandatory TP stage.","並非已確認的專題必經階段。"),
+      P("The meaning of “commercialized to be transacted” remains open.",
+        "「commercialized to be transacted」的意思仍待釐清。")
+    ],"warm")
+  ]
+}
+];
+
+const UI={
+en:{
+  brand:"Systematic · Structured · Process-oriented",
+  nav:"Modules & subtopics",skip:"Skip to content",
+  aside:"The diagram follows the reviewed SVG. Workflow details are proposed applications.",
+  audio:"Audio overview",
+  note:"Browser text-to-speech; voices and pause support vary by device. No autoplay.",
+  play:"Play",pause:"Pause",resume:"Resume",stop:"Stop",speed:"Speed",
+  transcript:"Read the overview transcript",ready:"Ready to play.",
+  playing:"Playing overview.",paused:"Audio paused.",ended:"Overview finished.",
+  stopped:"Audio stopped.",error:"Audio unavailable. Please read the transcript.",
+  unsupported:"This browser does not support text-to-speech. Read the transcript.",
+  speedChanged:"Speed updated. Play again to use it.",
+  previous:"← Previous",next:"Next →",top:"↑ Back to top",
+  dark:"Dark",light:"Light",version:"Version",module:"Module",
+  footer:"Based on class notes and confirmed clarifications.",
+  download:"↓ Download HTML",open:"Open navigation",close:"Close navigation",
+  diagramTitle:"BNA Agent: from questions to insights",
+  diagramDesc:"Six stages in a vertical flow, with a separate market track.",
+  diagramHint:"Select a stage to open its module.",
+  refine:"Refine requirements and process as needed",
+  market:"RELATED TRACK · MARKET CONSIDERATIONS",
+  example:"Class-note summarization is a separate example, not a confirmed Agent feature."
+},
+zh:{
+  brand:"系統性 · 結構性 · 流程導向",
+  nav:"模組與子主題",skip:"跳至主要內容",
+  aside:"流程圖依據已審閱 SVG。流程細節屬於建議應用。",
+  audio:"語音導覽",
+  note:"使用瀏覽器文字轉語音；聲音與暫停支援依裝置而異。不會自動播放。",
+  play:"播放",pause:"暫停",resume:"繼續",stop:"停止",speed:"速度",
+  transcript:"閱讀導覽逐字稿",ready:"可以開始播放。",
+  playing:"正在播放導覽。",paused:"語音已暫停。",ended:"導覽播放完畢。",
+  stopped:"語音已停止。",error:"無法播放語音，請閱讀逐字稿。",
+  unsupported:"此瀏覽器不支援文字轉語音，請閱讀逐字稿。",
+  speedChanged:"速度已更新，重新播放即可套用。",
+  previous:"← 上一個",next:"下一個 →",top:"↑ 返回頂端",
+  dark:"深色",light:"淺色",version:"版本",module:"模組",
+  footer:"依據課堂筆記與已確認的補充說明整理。",
+  download:"↓ 下載 HTML",open:"開啟導覽",close:"關閉導覽",
+  diagramTitle:"BNA Agent：從問題到洞察",
+  diagramDesc:"六階段垂直流程，以及獨立的市場相關議題。",
+  diagramHint:"點選任一階段，可開啟對應模組。",
+  refine:"視需要改善需求與流程",
+  market:"相關議題 · 市場考量",
+  example:"課堂筆記摘要為獨立示例，並非已確認的 Agent 功能。"
+}
+};
+
+const saved={
+  get(k){try{return localStorage.getItem(k)}catch{return null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch{}}
+};
+let lang=saved.get("bna-language")==="zh"?"zh":"en";
+let theme=saved.get("bna-theme")==="dark"?"dark":"light";
+let current=0;
+let audioState="idle",audioToken=0,utterance=null;
+const hasAudio="speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const mobile=matchMedia("(max-width:720px)");
+const reduced=matchMedia("(prefers-reduced-motion:reduce)");
+const T=value=>value[lang];
+
+function el(tag,content,className){
+  const node=document.createElement(tag);
+  if(content!==undefined)node.textContent=content;
+  if(className)node.className=className;
+  return node;
+}
+function escapeXML(value){
+  return String(value).replace(/[&<>"']/g,c=>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]));
+}
+
+/* Inline SVG uses theme variables and language-specific labels. */
+function renderDiagram(){
+  const host=$("diagramContainer");
+  host.replaceChildren();
+  if(current!==0)return;
+  const t=UI[lang],X=escapeXML;
+  const label=(en,zh)=>X(T(P(en,zh)));
+  const txt=(x,y,value,cls="body")=>
+    `<text x="${x}" y="${y}" class="${cls}">${value}</text>`;
+  const rect=(y,h,tone="")=>
+    `<rect x="42" y="${y}" width="696" height="${h}" rx="15"
+      class="box ${tone}"/>`;
+  const arrow=(a,b)=>
+    `<path d="M390 ${a} V${b}" class="connector" marker-end="url(#arrow)"/>`;
+  const link=(id,content)=>`<a href="#${id}">${content}</a>`;
+
+  host.innerHTML=`
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1510"
+    class="diagram" role="group" aria-labelledby="svgTitle svgDesc">
+    <title id="svgTitle">${X(t.diagramTitle)}</title>
+    <desc id="svgDesc">${X(t.diagramDesc)}</desc>
+    <defs>
+      <marker id="arrow" markerWidth="9" markerHeight="9"
+        refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+        <path d="M1 1 L7 4.5 L1 8" fill="none"
+          stroke="var(--muted)" stroke-width="1.6"/>
+      </marker>
+    </defs>
+    ${txt(42,30,X(t.diagramHint),"sub")}
+
+    ${link("project",rect(52,116,"blue-box")
+      +txt(64,80,label("01 · DEFINE THE PROJECT","01 · 定義專題"),"label")
+      +txt(64,111,label("Establish purpose and analytical focus","確立目的與分析焦點"),"heading")
+      +txt(64,140,label("BNA Agent: company-related news and analysis",
+                       "BNA Agent：公司相關新聞與分析")))}
+    ${arrow(169,194)}
+
+    ${link("requirements",rect(204,136,"purple-box")
+      +txt(64,232,label("02 · REQUIREMENTS AND SCOPE","02 · 需求與範圍"),"label")
+      +txt(64,267,label("PRD · Product Requirements Document","PRD · 產品需求文件"),"heading")
+      +txt(64,297,label("MVP · Minimum Viable Product","MVP · 最小可行產品"),"heading")
+      +txt(64,322,label("Define requirements and essential initial functionality",
+                       "界定產品需求與必要初版功能"),"sub"))}
+    ${arrow(341,367)}
+
+    ${link("inputs",rect(377,110,"green-box")
+      +txt(64,405,label("03 · COLLECT RELEVANT MATERIAL","03 · 蒐集相關資料"),"label")
+      +txt(64,438,label("Gather company-related news and analysis","蒐集公司相關新聞與分析"),"heading")
+      +txt(64,466,label("Organize material for evidence-based investigation",
+                       "整理資料，以支持證據導向探究"),"sub"))}
+    ${arrow(488,514)}
+
+    ${link("method",rect(524,365,"blue-box")
+      +txt(64,552,label("04 · CORE ANALYTICAL METHOD","04 · 核心分析方法"),"label"))}
+
+    ${link("method/separate",
+      `<rect x="64" y="572" width="652" height="85" rx="11" class="box"/>`
+      +txt(84,602,label("1 · Separate","1 · 拆解"),"heading")
+      +txt(84,635,label("Problem · Needs / demand · Questions","問題 · 需求 · 提問")))}
+    ${arrow(658,673)}
+
+    ${link("method/investigate",
+      `<rect x="64" y="683" width="652" height="85" rx="11" class="box"/>`
+      +txt(84,713,label("2 · Investigate deeply","2 · 深入探究"),"heading")
+      +txt(84,746,label("Examine components and support findings with evidence",
+                       "檢視各要素，以證據支持發現")))}
+    ${arrow(769,784)}
+
+    ${link("method/recombine",
+      `<rect x="64" y="794" width="652" height="74" rx="11" class="box"/>`
+      +txt(84,824,label("3 · Recombine","3 · 重新整合"),"heading")
+      +txt(84,851,label("Integrate findings and explain relationships",
+                       "整合發現，說明彼此關係"),"sub"))}
+    ${arrow(890,916)}
+
+    ${link("outcomes",rect(926,108,"green-box")
+      +txt(64,954,label("05 · PRESENT THE OUTCOME","05 · 呈現成果"),"label")
+      +txt(64,987,label("New representation → Insights","新的呈現方式 → 洞察"),"heading")
+      +txt(64,1014,label("Structured summary · Model · Diagram",
+                        "結構化摘要 · 模型 · 圖表"),"sub"))}
+    ${arrow(1035,1061)}
+
+    ${link("evaluation",rect(1071,154,"warm-box")
+      +txt(64,1099,label("06 · EVALUATE AND REFINE","06 · 評估與改善"),"label")
+      +txt(64,1132,label("Effectiveness: achieve the goal and purpose",
+                        "有效性：達成目標與目的"))
+      +txt(64,1162,label("Efficiency: use resources appropriately",
+                        "效率：適當運用資源"))
+      +txt(64,1190,label("Minimal input ≠ automatic high-quality output",
+                        "最少輸入 ≠ 自動產生高品質成果"),"sub")
+      +txt(64,1213,label("Follow necessary steps; understand the whole process",
+                        "完成必要步驟，理解整體流程"),"sub"))}
+
+    <path d="M739 1145 H764 V270 H741" class="connector"
+      stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+    <text x="785" y="750" text-anchor="middle"
+      transform="rotate(-90 785 750)" class="sub">${X(t.refine)}</text>
+
+    ${link("market",
+      `<rect x="42" y="1265" width="696" height="125" rx="15"
+        class="box purple-box" stroke-dasharray="6 4"/>`
+      +txt(64,1293,X(t.market),"label")
+      +txt(64,1325,label("Producers ↔ Market ↔ Consumers","生產者 ↔ 市場 ↔ 消費者"))
+      +txt(64,1354,label("Target audience · Value · WTP","目標受眾 · 價值 · 願付價格"))
+      +txt(64,1378,label("Commercialization: TP relevance to be confirmed",
+                        "商業化：是否納入專題待確認"),"sub"))}
+
+    ${txt(42,1430,label("Basis: reviewed diagram and confirmed clarifications.",
+                        "依據：已審閱流程圖與已確認補充說明。"),"sub")}
+    ${txt(42,1460,label("Workflow details are proposed project applications.",
+                        "流程細節屬於建議的專題應用。"),"sub")}
+    ${txt(42,1490,X(t.example),"sub")}
+  </svg>`;
+
+  host.querySelectorAll("a").forEach(a=>{
+    a.addEventListener("click",event=>{
+      event.preventDefault();
+      const parts=a.getAttribute("href").slice(1).split("/");
+      const index=modules.findIndex(m=>m.id===parts[0]);
+      navigate(index,parts[1]);
+    });
+  });
+}
+
+function renderNav(){
+  const nav=$("navigation");
+  nav.replaceChildren();
+  modules.forEach((m,index)=>{
+    const b=el("button",T(m.title),"module-button");
+    if(index===current)b.setAttribute("aria-current","page");
+    b.addEventListener("click",()=>navigate(index));
+    nav.append(b);
+    if(index===current){
+      const sub=el("div",undefined,"subnav");
+      m.sections.forEach(s=>{
+        const a=el("a",T(s.title));
+        a.href="#"+m.id+"/"+s.id;
+        a.addEventListener("click",e=>{
+          e.preventDefault();navigate(index,s.id);
+        });
+        sub.append(a);
+      });
+      nav.append(sub);
+    }
+  });
+}
+function renderSections(){
+  const host=$("sections");
+  host.replaceChildren();
+  modules[current].sections.forEach(s=>{
+    const card=el("section",undefined,"card "+s.tone);
+    card.id=s.id;card.tabIndex=-1;
+    const heading=el("h2",T(s.title));
+    heading.id=s.id+"-heading";
+    card.setAttribute("aria-labelledby",heading.id);
+    card.append(heading);
+    const list=el("ul");
+    s.items.forEach(item=>list.append(el("li",T(item))));
+    card.append(list);
+    if(s.result)card.append(el("p",T(s.result),"result"));
+    host.append(card);
+  });
+}
+function themeUpdate(){
+  document.documentElement.dataset.theme=theme;
+  $("theme").textContent=theme==="light"?UI[lang].dark:UI[lang].light;
+  $("theme").setAttribute("aria-label",
+    lang==="en"
+      ?`Switch to ${theme==="light"?"dark":"light"} theme`
+      :`切換至${theme==="light"?"深色":"淺色"}主題`);
+}
+function audioControls(message){
+  $("play").disabled=!hasAudio || audioState!=="idle";
+  $("pause").disabled=!hasAudio || audioState==="idle";
+  $("stop").disabled=!hasAudio || audioState==="idle";
+  $("speed").disabled=!hasAudio;
+  $("pause").textContent=audioState==="paused"?UI[lang].resume:UI[lang].pause;
+  if(message)$("audioStatus").textContent=message;
+}
+function stopAudio(message){
+  audioToken++;
+  if(hasAudio)speechSynthesis.cancel();
+  utterance=null;audioState="idle";
+  audioControls(message);
+}
+function playAudio(){
+  if(!hasAudio)return;
+  stopAudio();
+  const token=audioToken;
+  const u=new SpeechSynthesisUtterance(T(modules[current].audio));
+  utterance=u;
+  u.lang=lang==="zh"?"zh-TW":"en-US";
+  u.rate=Number($("speed").value);
+  const voices=speechSynthesis.getVoices();
+  u.voice=voices.find(v=>v.lang.toLowerCase()===u.lang.toLowerCase())
+    ||voices.find(v=>v.lang.toLowerCase().startsWith(lang==="zh"?"zh":"en"))
+    ||null;
+  u.onend=()=>{
+    if(token!==audioToken)return;
+    utterance=null;audioState="idle";audioControls(UI[lang].ended);
+  };
+  u.onerror=()=>{
+    if(token!==audioToken)return;
+    utterance=null;audioState="idle";audioControls(UI[lang].error);
+  };
+  audioState="playing";audioControls(UI[lang].playing);
+  speechSynthesis.speak(u);
+}
+function render(){
+  const t=UI[lang],m=modules[current];
+  document.documentElement.lang=lang==="zh"?"zh-Hant-TW":"en";
+  document.title=T(m.title)+" · BNA Week 12";
+  $("brandSub").textContent=t.brand;
+  $("skip").textContent=t.skip;
+  $("navHeading").textContent=t.nav;
+  $("navigation").setAttribute("aria-label",t.nav);
+  $("sidebar").setAttribute("aria-label",t.nav);
+  $("asideNote").textContent=t.aside;
+  $("download").textContent=t.download;
+  $("language").textContent=lang==="en"?"繁體中文":"English";
+  $("language").setAttribute("aria-label",
+    lang==="en"?"Switch to Traditional Chinese":"切換至英文");
+  $("openMenu").setAttribute("aria-label",t.open);
+  $("closeMenu").setAttribute("aria-label",t.close);
+  $("eyebrow").textContent="BUSINESS NEWS AND ANALYSIS · WEEK 12";
+  $("title").textContent=T(m.title);
+  $("intro").textContent=T(m.intro);
+  $("badge").hidden=!m.badge;
+  $("badge").textContent=m.badge?T(m.badge):"";
+  $("audioTitle").textContent=t.audio;
+  $("audioNote").textContent=t.note;
+  $("play").textContent=t.play;
+  $("stop").textContent=t.stop;
+  $("speedLabel").textContent=t.speed;
+  $("transcriptLabel").textContent=t.transcript;
+  $("transcript").textContent=T(m.audio);
+  $("previous").textContent=t.previous;
+  $("next").textContent=t.next;
+  $("backTop").textContent=t.top;
+  $("previous").disabled=current===0;
+  $("next").disabled=current===modules.length-1;
+  $("pagination").setAttribute("aria-label",lang==="en"?"Module pagination":"模組翻頁導覽");
+  $("count").textContent=`${t.module} ${current+1} / ${modules.length}`;
+  $("versionLabel").textContent=t.version;
+  $("footerNote").textContent=t.footer;
+  themeUpdate();
+  renderNav();
+  renderDiagram();
+  renderSections();
+  audioControls(hasAudio?t.ready:t.unsupported);
+}
+function drawer(open,restore=false){
+  open=Boolean(open && mobile.matches);
+  document.body.classList.toggle("drawer-open",open);
+  $("openMenu").setAttribute("aria-expanded",String(open));
+  $("sidebar").inert=mobile.matches && !open;
+  $("main").inert=open;
+  $("bar").inert=open;
+  if(open)$("closeMenu").focus();
+  else if(restore)$("openMenu").focus();
+}
+function scrollContent(section){
+  const target=section?$(section):$("title");
+  if(!target)return;
+  requestAnimationFrame(()=>{
+    target.focus({preventScroll:true});
+    const behavior=reduced.matches?"auto":"smooth";
+    if(section)target.scrollIntoView({behavior,block:"start"});
+    else window.scrollTo({top:0,behavior});
+  });
+}
+function navigate(index,section=null){
+  stopAudio();
+  current=Math.max(0,Math.min(index,modules.length-1));
+  if(!modules[current].sections.some(s=>s.id===section))section=null;
+  const hash="#"+modules[current].id+(section?"/"+section:"");
+  try{
+    if(location.hash!==hash)history.pushState(null,"",hash);
+  }catch{
+    if(location.hash!==hash)location.hash=hash;
+  }
+  drawer(false);render();scrollContent(section);
+}
+function loadRoute(focus=true){
+  const parts=location.hash.slice(1).split("/");
+  const index=modules.findIndex(m=>m.id===parts[0]);
+  current=index<0?0:index;
+  const section=modules[current].sections.some(s=>s.id===parts[1])?parts[1]:null;
+  stopAudio();drawer(false);render();
+  if(focus || section)scrollContent(section);
+}
+
+/* Save a clean snapshot. Dynamic content is rebuilt on opening. */
+function downloadHTML(){
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelector("body").classList.remove("drawer-open");
+  clone.querySelectorAll("[inert]").forEach(n=>n.removeAttribute("inert"));
+  clone.querySelector("#openMenu").setAttribute("aria-expanded","false");
+  ["navigation","diagramContainer","sections"].forEach(id=>{
+    clone.querySelector("#"+id).replaceChildren();
+  });
+  ["play","speed"].forEach(id=>{
+    clone.querySelector("#"+id).removeAttribute("disabled");
+  });
+  ["pause","stop"].forEach(id=>{
+    clone.querySelector("#"+id).setAttribute("disabled","");
+  });
+  const blob=new Blob(
+    ["<!DOCTYPE html>\n"+clone.outerHTML],
+    {type:"text/html;charset=utf-8"}
+  );
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download="index.html";
+  document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+
+$("language").addEventListener("click",()=>{
+  stopAudio();lang=lang==="en"?"zh":"en";
+  saved.set("bna-language",lang);render();
+});
+$("theme").addEventListener("click",()=>{
+  theme=theme==="light"?"dark":"light";
+  saved.set("bna-theme",theme);themeUpdate();
+});
+$("openMenu").addEventListener("click",()=>drawer(true));
+$("closeMenu").addEventListener("click",()=>drawer(false,true));
+$("backdrop").addEventListener("click",()=>drawer(false,true));
+mobile.addEventListener("change",()=>drawer(false));
+document.addEventListener("keydown",e=>{
+  if(!document.body.classList.contains("drawer-open"))return;
+  if(e.key==="Escape"){drawer(false,true);return}
+  if(e.key==="Tab"){
+    const nodes=[...$("sidebar").querySelectorAll("button,a[href]")]
+      .filter(n=>!n.disabled);
+    const first=nodes[0],last=nodes[nodes.length-1];
+    if(e.shiftKey && document.activeElement===first){
+      e.preventDefault();last.focus();
+    }else if(!e.shiftKey && document.activeElement===last){
+      e.preventDefault();first.focus();
+    }
+  }
+});
+$("previous").addEventListener("click",()=>navigate(current-1));
+$("next").addEventListener("click",()=>navigate(current+1));
+$("backTop").addEventListener("click",()=>scrollContent(null));
+$("play").addEventListener("click",playAudio);
+$("stop").addEventListener("click",()=>stopAudio(UI[lang].stopped));
+$("pause").addEventListener("click",()=>{
+  if(!hasAudio || audioState==="idle")return;
+  if(audioState==="paused"){
+    speechSynthesis.resume();audioState="playing";
+    audioControls(UI[lang].playing);
+  }else{
+    speechSynthesis.pause();audioState="paused";
+    audioControls(UI[lang].paused);
+  }
+});
+$("speed").addEventListener("change",()=>{
+  if(audioState!=="idle")stopAudio(UI[lang].speedChanged);
+});
+$("download").addEventListener("click",downloadHTML);
+window.addEventListener("popstate",()=>loadRoute());
+window.addEventListener("hashchange",()=>loadRoute());
+window.addEventListener("pagehide",()=>stopAudio());
+loadRoute(false);
+</script>
+</body>
+</html>
+
+							<script>
+                            	
+							</script>
+                        </body>
+                        </html>
+                    
